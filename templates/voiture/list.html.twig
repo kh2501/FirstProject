@@ -1,0 +1,21 @@
+<h3>Liste De Voiture</h3>
+<table border="2" >
+    <tr>
+        <td>matricule</td>
+        <td>marque</td>
+        <td>vitesse</td>
+        <td>Action</td>
+    </tr>
+
+
+    {% for c in tabVoiture %}
+        <tr>
+            <td> {{ c.matricule }}</td>
+            <td> {{ c.marque }}</td>
+            <td> {{ c.vitesse }}</td>
+            <td>
+                <a href="{{ path('app_deletevoiture',{'matricule':c.matricule}) }}" style="color: darkred">Supprimer</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
