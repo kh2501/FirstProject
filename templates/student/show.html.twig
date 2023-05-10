@@ -3,8 +3,35 @@
 <h1 style="color: red">Show Student</h1>
 <h3>Moyenne de {{ variable1 }} est {{ variable2 }}</h3>
 <h1>La liste des formations</h1>
-{% for f in tabFormations %}
-    ref : {{ f.ref }}
-    titre: {{ f.Titre|upper }}
-    <br>
+<br>
+<caption>liste de formation</caption>
+<table border="1" width=800PX >
+    <tr style="color:darkred">
+        <th>Ref</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>nb_participiant</th>
+        <th>Participiant</th>
+    </tr>
+    {% if tabFormations is empty %}
+
+    <h3>le nbr de formation est : {{ tabFormations|length}}</h3>
+    {% else %}
+    {% for f in tabFormations %}
+   <tr>
+       <td>{{ f.ref|upper }}</td>
+       <td>{{ f.Titre }}</td>
+       <td>{{ f.Description}}</td>
+       <td>{{ f.nb_participants}}</td>
+       <td>
+           {% if f.nb_participants==0 %}
+           <a href="#">part</a>
+           {% else %}
+           complet
+               {% endif %}
+       </td>
+
+   </tr>
 {% endfor %}
+    <h3>le nbr de formation est : {{ tabFormations|length}}</h3>
+    {% endif %}
